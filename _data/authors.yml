@@ -1,0 +1,17 @@
+# DEKK Team Members
+# 아카이브 작성자 정보
+
+frontend-team:
+  name: "Frontend Team"
+  url: "/categories/frontend/"
+  email: "frontend@potenup-dekk.com"
+
+backend-team:
+  name: "Backend Team"
+  url: "/categories/backend/"
+  email: "backend@potenup-dekk.com"
+
+devops-team:
+  name: "DevOps Team"
+  url: "/categories/devops/"
+  email: "devops@potenup-dekk.com"

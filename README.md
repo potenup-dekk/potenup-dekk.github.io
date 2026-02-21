@@ -1,43 +1,85 @@
-# Chirpy Starter
+# DEKK Archive 🚀
 
-[![Gem Version](https://img.shields.io/gem/v/jekyll-theme-chirpy)][gem]&nbsp;
-[![GitHub license](https://img.shields.io/github/license/cotes2020/chirpy-starter.svg?color=blue)][mit]
+[![Build Status](https://img.shields.io/github/actions/workflow/status/potenup-dekk/potenup-dekk.github.io/jekyll-deploy.yml?branch=main)][status]
+[![License](https://img.shields.io/github/license/potenup-dekk/potenup-dekk.github.io)][license]
 
-When installing the [**Chirpy**][chirpy] theme through [RubyGems.org][gem], Jekyll can only read files in the folders
-`_data`, `_layouts`, `_includes`, `_sass` and `assets`, as well as a small part of options of the `_config.yml` file
-from the theme's gem. If you have ever installed this theme gem, you can use the command
-`bundle info --path jekyll-theme-chirpy` to locate these files.
+---
 
-The Jekyll team claims that this is to leave the ball in the user’s court, but this also results in users not being
-able to enjoy the out-of-the-box experience when using feature-rich themes.
+## 📖 소개
 
-To fully use all the features of **Chirpy**, you need to copy the other critical files from the theme's gem to your
-Jekyll site. The following is a list of targets:
+**DEKK Archive**는 DEKK 서비스의 Frontend/Backend 엔지니어들이 함께 만드는 기술 아카이브입니다.
 
-```shell
-.
-├── _config.yml
-├── _plugins
-├── _tabs
-└── index.html
+- 🎨 **Frontend**: React, Vue, TypeScript, 성능 최적화 등
+- ⚙️ **Backend**: Node.js, 데이터베이스, API 설계 등
+- 📝 **Retrospective**: 팀 프로젝트 회고, 학습 기록
+
+**목표**: 팀 전체의 성장과 지식 축적을 통한 기술 수준 향상
+
+---
+
+## 🚀 기여하기
+
+**모든 팀원이 월 1회 이상 포스트 작성에 참여할 수 있습니다.**
+
+### 🏷️ 카테고리
+
+- 🎨 **Frontend** - Frontend 관련 모든 주제
+- ⚙️ **Backend** - Backend 관련 모든 주제
+- 📝 **Retrospective** - 팀 회고 및 학습 기록
+
+### 제출 프로세스
+
+```bash
+# 1. 저장소 클론 (처음 한 번만)
+git clone https://github.com/potenup-dekk/potenup-dekk.github.io.git
+cd potenup-dekk.github.io
+
+# 2. 브랜치 생성
+git checkout -b feat/your-post-name
+
+# 3. 포스트 작성
+# _posts/YYYY-MM-DD-title.md 파일 생성
+# 자세한 가이드: CONTRIBUTING.md 참조
+
+# 4. 커밋 및 푸시
+git add _posts/YYYY-MM-DD-title.md
+git commit -m "[Frontend] 포스트 제목"
+git push origin feat/your-post-name
+
+# 5. PR 생성 및 병합
+# GitHub에서 PR을 생성하면 리뷰 후 자동 배포됩니다! ✨
 ```
 
-To save you time, and also in case you lose some files while copying, we extract those files/configurations of the
-latest version of the **Chirpy** theme and the [CD][CD] workflow to here, so that you can start writing in minutes.
+---
 
-## Usage
+## 📂 프로젝트 구조
 
-Check out the [theme's docs](https://github.com/cotes2020/jekyll-theme-chirpy/wiki).
+```
+.
+├── _posts/                      # 블로그 포스트
+├── _tabs/                       # 고정 페이지 (about, archives 등)
+├── _data/                       # 메타데이터 (authors, contact 등)
+├── assets/                      # 이미지 및 CSS
+├── _config.yml                  # Jekyll 설정
+├── CONTRIBUTING.md              # 포스트 작성 가이드
+└── README.md                    # 이 파일
+```
 
-## Contributing
+---
 
-This repository is automatically updated with new releases from the theme repository. If you encounter any issues or want to contribute to its improvement, please visit the [theme repository][chirpy] to provide feedback.
+## 🛠️ 기술 스택
 
-## License
+- **블로그 엔진**: Jekyll
+- **테마**: Chirpy
+- **배포**: GitHub Pages
+- **CI/CD**: GitHub Actions
 
-This work is published under [MIT][mit] License.
+---
 
-[gem]: https://rubygems.org/gems/jekyll-theme-chirpy
-[chirpy]: https://github.com/cotes2020/jekyll-theme-chirpy/
-[CD]: https://en.wikipedia.org/wiki/Continuous_deployment
-[mit]: https://github.com/cotes2020/chirpy-starter/blob/master/LICENSE
+## 📞 문의 및 피드백
+
+- **GitHub Issues**: [질문하기](https://github.com/potenup-dekk/potenup-dekk.github.io/issues)
+
+---
+
+**함께 성장하는 개발 문화를 만들어가요! 🚀**
