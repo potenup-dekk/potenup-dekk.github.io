@@ -1,17 +1,32 @@
 # DEKK Team Members
 # 아카이브 작성자 정보
 
-frontend-team:
-  name: "Frontend Team"
-  url: "/categories/frontend/"
-  email: "frontend@potenup-dekk.com"
+SungRyulCho:
+  name: "조성률"
+  url: "https://github.com/SungRyulCho"
+  email: "hahahoho5811@gmail.com"
 
-backend-team:
-  name: "Backend Team"
-  url: "/categories/backend/"
-  email: "backend@potenup-dekk.com"
+dd-jiyun:
+  name: "이지윤"
+  url: "https://github.com/dd-jiyun"
+  email: "dlwldbs8015@gmail.com"
 
-devops-team:
-  name: "DevOps Team"
-  url: "/categories/devops/"
-  email: "devops@potenup-dekk.com"
+youabledev:
+  name: "유효진"
+  url: "https://github.com/youabledev"
+  email: "youable.framios@gmail.com"
+
+woongblack123:
+  name: "정재웅"
+  url: https://github.com/woongblack
+  email: woongblack123@gmail.com
+
+whozbebop:
+  name: 김종덕
+  url: https://github.com/whozbebop
+  email: whozbebop@gmail.com
+
+monegit:
+  name: 박종원
+  url: https://github.com/monegit
+  email: pjw970220@gmail.com
