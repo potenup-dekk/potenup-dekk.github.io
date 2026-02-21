@@ -1,7 +1,7 @@
 # DEKK Archive 🚀
 
-[![Build Status](https://img.shields.io/github/actions/workflow/status/potenup-dekk/potenup-dekk.github.io/jekyll-deploy.yml?branch=main)][status]
-[![License](https://img.shields.io/github/license/potenup-dekk/potenup-dekk.github.io)][license]
+![Build Status](https://img.shields.io/github/actions/workflow/status/potenup-dekk/potenup-dekk.github.io/jekyll-deploy.yml?branch=main)
+![License](https://img.shields.io/github/license/potenup-dekk/potenup-dekk.github.io)
 
 ---
 
