@@ -20,20 +20,20 @@ author: "woongblack"
 * **키 확인:** 왼쪽 메뉴 **[앱 설정] > [요약 정보]**에서 REST API 키 확인 가능
 * REST API키를 누르게 되면 리다이렉트 URL, 클라이언트 시크릿키 확인 가능
 
-![카카오 앱 설정 및 요약 정보](/assets/img/dekk/img.png)
+![카카오 앱 설정 및 요약 정보](/assets/img/social-login-api-guide/img.png)
 
 * **리다이렉트 URI 설정:** [제품 설정] > [카카오 로그인]
 * **활성화 설정:** ON
 * **Redirect URI:** `http://localhost:8080/login/oauth2/code/kakao`
 
-![카카오 리다이렉트 URI 설정](/assets/img/dekk/img_1.png)
+![카카오 리다이렉트 URI 설정](/assets/img/social-login-api-guide/img_1.png)
 
 ### 1-2. Client Secret (보안 키)
 * **접속 경로:** 왼쪽 메뉴 [제품 설정] > [카카오 로그인] > [보안]
 * **상태:** 활성화 ON
 * **코드:** Client Secret 코드 확인 (이 코드는 유출되지 않도록 주의!)
 
-![카카오 Client Secret 설정](/assets/img/dekk/img_2.png)
+![카카오 Client Secret 설정](/assets/img/social-login-api-guide/img_2.png)
 
 ---
 
@@ -45,16 +45,16 @@ author: "woongblack"
 * **키 확인:** OAuth 2.0 클라이언트 ID 목록에서 현재 프로젝트 클릭
 * 상단 우측에서 클라이언트 ID와 클라이언트 보안 비밀번호(Client Secret) 확인 가능
 
-![구글 클라이언트 ID 및 보안 비밀번호](/assets/img/dekk/img_3.png)
+![구글 클라이언트 ID 및 보안 비밀번호](/assets/img/social-login-api-guide/img_3.png)
 
 ### 2-2. 승인된 리디렉션 URI 설정
 * 같은 화면의 하단 **[승인된 리디렉션 URI]** 항목 확인
 * **등록된 URI:** `http://localhost:8080/login/oauth2/code/google`
 
-![구글 승인된 리디렉션 URI 설정](/assets/img/dekk/img_4.png)
+![구글 승인된 리디렉션 URI 설정](/assets/img/social-login-api-guide/img_4.png)
 
 ---
 > **💡 참고 사항**
 > 발급받은 API 키와 Secret 정보는 절대 GitHub에 직접 커밋되지 않도록 `application.yml`이나 `.env` 파일에 분리하고 `.gitignore`에 추가되어 있는지 꼭 확인해 주세요!
 
-![환경변수 설정 예시 화면 (선택 사항)](/assets/img/dekk/img_5.png)
+![환경변수 설정 예시 화면 (선택 사항)](/assets/img/social-login-api-guide/img_5.png)
