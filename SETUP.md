@@ -73,7 +73,6 @@ potenup-dekk.github.io/
 | --------------- | ----------- | ------------------- | --------------- |
 | `Frontend`      | fe.md       | fe.md               | /fe/            |
 | `Backend`       | be.md       | be.md               | /be/            |
-| `Retrospective` | (자동 생성) | 따로 파일 필요 없음 | /retrospective/ |
 
 ### Front Matter 예시
 

@@ -34,7 +34,6 @@ author: "작성자 이름 (또는 github username)"
 
 - `Frontend` - Frontend 모든 주제
 - `Backend` - Backend 모든 주제
-- `Retrospective` - 팀 전체 회고
 
 **태그 규칙:**
 
@@ -142,7 +141,7 @@ git checkout -b feat/your-post-name
 ```bash
 git add _posts/YYYY-MM-DD-title.md
 git commit -m "[Frontend] 포스트 제목 설명"
-# [Backend] 또는 [Retrospective] 도 사용 가능
+# [Backend]도 사용 가능
 
 git push origin feat/your-post-name
 ```
@@ -165,7 +164,7 @@ git push origin feat/your-post-name
 - [ ] 코드 블록에 언어 타입을 명시했는가? (`javascript, `python 등)
 - [ ] 이미지 경로가 올바른가? (있다면)
 - [ ] 오타나 문법 오류를 확인했는가?
-- [ ] 커밋 메시지에 [Frontend], [Backend], 또는 [Retrospective] 태그를 붙였는가?
+- [ ] 커밋 메시지에 [Frontend], [Backend] 태그를 붙였는가?
 
 ---
 

@@ -11,7 +11,6 @@
 
 - 🎨 **Frontend**: React, Vue, TypeScript, 성능 최적화 등
 - ⚙️ **Backend**: Node.js, 데이터베이스, API 설계 등
-- 📝 **Retrospective**: 팀 프로젝트 회고, 학습 기록
 
 **목표**: 팀 전체의 성장과 지식 축적을 통한 기술 수준 향상
 
@@ -25,7 +24,6 @@
 
 - 🎨 **Frontend** - Frontend 관련 모든 주제
 - ⚙️ **Backend** - Backend 관련 모든 주제
-- 📝 **Retrospective** - 팀 회고 및 학습 기록
 
 ### 제출 프로세스
 
