@@ -7,10 +7,12 @@
 
 ## 📖 소개
 
-**DEKK Archive**는 DEKK 서비스의 Frontend/Backend 엔지니어들이 함께 만드는 기술 아카이브입니다.
+**DEKK Archive**는 DEKK 서비스의 모든 팀원이 함께 만드는 기술 아카이브입니다.
 
+- 📢 **ALL**: 직군 무관, 모든 팀원이 알면 좋을 내용
 - 🎨 **Frontend**: React, Vue, TypeScript, 성능 최적화 등
 - ⚙️ **Backend**: Node.js, 데이터베이스, API 설계 등
+- 🖌️ **Design**: UI/UX, 디자인 시스템, 협업 관련 내용
 
 **목표**: 팀 전체의 성장과 지식 축적을 통한 기술 수준 향상
 
@@ -22,8 +24,10 @@
 
 ### 🏷️ 카테고리
 
+- 📢 **ALL** - 직군 무관, 모든 팀원이 알면 좋을 내용
 - 🎨 **Frontend** - Frontend 관련 모든 주제
 - ⚙️ **Backend** - Backend 관련 모든 주제
+- 🖌️ **Design** - UI/UX, 디자인 시스템, 협업 관련 내용
 
 ### 제출 프로세스
 
@@ -41,7 +45,8 @@ git checkout -b feat/your-post-name
 
 # 4. 커밋 및 푸시
 git add _posts/YYYY-MM-DD-title.md
-git commit -m "[Frontend] 포스트 제목"
+git commit -m "[ALL] 포스트 제목"
+# 또는 [Frontend], [Backend], [Design] 중 해당하는 카테고리 사용
 git push origin feat/your-post-name
 
 # 5. PR 생성 및 병합
