@@ -1,4 +1,4 @@
- ---
+---
 title: "Jira x GitHub 연동 가이드"
 date: 2026-02-23 14:15:00 +0900
 categories: [All]
