@@ -5,6 +5,7 @@ categories: [All]
 tags: [jira, GitHub, automation, workflow]
 author: "woongblack"
 ---
+
 # 📘 Jira x GitHub 자동화 연동 가이드
 
 ### 1. 사전 준비 (관리자 작업)
