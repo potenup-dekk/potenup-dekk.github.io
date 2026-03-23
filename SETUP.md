@@ -69,16 +69,17 @@ potenup-dekk.github.io/
 
 포스트의 Front Matter에 `categories` 필드를 정의하면, Jekyll이 자동으로 카테고리 페이지를 생성합니다.
 
-| 카테고리명      | 페이지 이름 | \_tabs 파일         | URL             |
-| --------------- | ----------- | ------------------- | --------------- |
-| `Frontend`      | fe.md       | fe.md               | /fe/            |
-| `Backend`       | be.md       | be.md               | /be/            |
+| 카테고리명 | 페이지 이름 | \_tabs 파일 | URL  |
+| ---------- | ----------- | ----------- | ---- |
+| `Frontend` | fe.md       | fe.md       | /fe/ |
+| `Backend`  | be.md       | be.md       | /be/ |
 
 ### Front Matter 예시
 
 ```yaml
 ---
 title: "포스트 제목"
+description: "간단한 포스트 설명"
 date: 2026-02-22 10:30:00 +0900
 categories: [Frontend] # ← 여기서 정의
 tags: [react, optimization]

@@ -1,5 +1,6 @@
 ---
 title: "제목을 입력해주세요."
+description: "간단한 설명을 입력해주세요."
 date: 작성된 날짜 입력해주세요
 categories: [Backend, Frontend, Design, AI, All 등 카테고리를 입력해주세요]
 tags: [글을 설명할 태그를 입력해주세요]
