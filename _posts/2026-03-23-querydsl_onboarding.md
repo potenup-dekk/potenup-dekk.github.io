@@ -116,7 +116,7 @@ QueryDSL이 자동으로 `QCustomer` 클래스를 생성합니다.
 
 ```java
 QCustomer customer = QCustomer.customer;      // 기본 싱글턴 인스턴스
-QCustomer customer = new QCustomer("c");      // 직접 변수명 지정 (조인 시 유용)
+QCustomer customerAlias = new QCustomer("c"); // 직접 변수명 지정 (조인 시 유용)
 ```
 
 > 💡 IntelliJ IDEA에서 Q클래스가 보이지 않으면 **Build > Rebuild Project**를 실행하세요.
@@ -175,6 +175,26 @@ queryFactory.selectFrom(customer)
     .fetch();
 ```
 
+> 💡 페이징 시에는 **콘텐츠 조회 쿼리(fetch)** 와 **카운트 쿼리(count)** 를 분리해서 작성하는 방식을 권장합니다.
+> 이때 카운트 쿼리에도 콘텐츠 쿼리와 **동일한 조건(where)** 을 반영해야 실제 페이지 수가 정확해집니다.
+
+```java
+BooleanExpression predicate = customer.level.gt(2);
+
+List<Customer> content = queryFactory
+    .selectFrom(customer)
+    .where(predicate)
+    .offset(pageable.getOffset())
+    .limit(pageable.getPageSize())
+    .fetch();
+
+Long total = queryFactory
+    .select(customer.count())
+    .from(customer)
+    .where(predicate)
+    .fetchOne();
+```
+
 ### 4.6 그룹핑
 
 ```java
@@ -188,7 +208,7 @@ queryFactory
 ## 5. 동적 쿼리 (핵심 기능)
 
 동적 쿼리는 QueryDSL의 가장 강력한 기능입니다.
-`@Query`로 동적 조건을 처리하면 코드가 복잡해지지만, QueryDSL은 `BooleanBuilder`로 깔끔하게 처리할 수 있습니다.
+`@Query`로 동적 조건을 처리하면 코드가 복잡해지기 쉽지만, QueryDSL은 `BooleanBuilder` 또는 `BooleanExpression` 조합으로 유연하게 처리할 수 있습니다.
 
 ### 5.1 BooleanBuilder 사용
 
@@ -210,17 +230,47 @@ public List<Customer> search(String name, Integer minLevel) {
 }
 ```
 
-### 5.2 @Query vs QueryDSL 비교
+### 5.2 BooleanExpression 다중 파라미터 방식
 
-|           | @Query (기존)                               | QueryDSL (이후)                      |
-| --------- | ------------------------------------------- | ------------------------------------ |
-| 방식      | `"WHERE (:name IS NULL OR u.name = :name)"` | `if (name != null) builder.and(...)` |
-| 오류 감지 | 런타임 오류                                 | 컴파일 오류                          |
-| 동적 조건 | 조건마다 쿼리 메서드 추가                   | BooleanBuilder로 단일 메서드 처리    |
+실무에서는 조건 메서드를 분리한 뒤, `where()`에 쉼표로 나열하는 패턴도 자주 사용합니다.
+`where()`에 `null`이 들어가면 해당 조건은 자동으로 무시됩니다.
+
+```java
+public List<Customer> search(String name, Integer minLevel) {
+    return queryFactory
+        .selectFrom(customer)
+        .where(
+            nameEq(name),
+            levelGoe(minLevel)
+        )
+        .fetch();
+}
+
+private BooleanExpression nameEq(String name) {
+    return (name == null || name.isBlank()) ? null : customer.firstName.eq(name);
+}
+
+private BooleanExpression levelGoe(Integer minLevel) {
+    return minLevel == null ? null : customer.level.goe(minLevel);
+}
+```
+
+> 어떤 방식이 "절대적으로" 더 낫다고 보긴 어렵습니다.
+> 단순한 동적 조건은 `BooleanExpression` 분리 방식이 읽기 쉽고 재사용성이 좋고,
+> 복잡한 OR/AND 중첩 조건은 `BooleanBuilder`가 더 명확한 경우가 많습니다.
+
+### 5.3 @Query vs QueryDSL 비교
+
+|           | @Query (기존)                               | QueryDSL (이후)                                                                     |
+| --------- | ------------------------------------------- | ----------------------------------------------------------------------------------- |
+| 방식      | `"WHERE (:name IS NULL OR u.name = :name)"` | `if (name != null) builder.and(...)` 또는 `where(nameEq(name), levelGoe(minLevel))` |
+| 오류 감지 | 런타임 오류                                 | 컴파일 오류                                                                         |
+| 동적 조건 | 조건마다 쿼리 메서드 추가                   | BooleanBuilder/BooleanExpression 조합                                               |
 
 ## 6. 조인
 
-QueryDSL은 `innerJoin`, `leftJoin`, `join`, `fullJoin`을 지원합니다.
+JPA 환경에서는 주로 `innerJoin`, `leftJoin`, `join`을 사용합니다.
+`fullJoin`은 기술적으로 표현 가능하더라도 JPA/JPQL 및 DB 조합에 따라 제약이 있을 수 있으니 주의하세요.
 같은 엔티티를 여러 번 조인할 때는 별도 별칭을 만들어야 합니다.
 
 ```java
@@ -238,19 +288,28 @@ queryFactory
 
 > ⚠️ QueryDSL JPA의 DML은 JPA 영속성 컨텍스트를 거치지 않고 직접 실행됩니다. 영속성 전파 규칙과 2차 캐시에 주의하세요.
 
+벌크 연산은 영속성 컨텍스트를 우회하므로, 실행 후에는 `clear()`로 영속성 컨텍스트를 비워 조회 정합성을 맞추는 것을 권장합니다.
+벌크 연산 전에 아직 반영되지 않은 변경이 있다면, 필요 시 `flush()`로 먼저 DB에 반영한 뒤 실행하세요.
+
 ### 7.1 Update
 
 ```java
+entityManager.flush(); // 필요 시: 벌크 실행 전 영속성 컨텍스트 변경사항 반영
+
 long count = queryFactory
     .update(customer)
     .where(customer.firstName.eq("Bob"))
     .set(customer.firstName, "Bobby")
     .execute();
+
+entityManager.clear();
 ```
 
 ### 7.2 Delete
 
 ```java
+entityManager.flush(); // 필요 시: 벌크 실행 전 영속성 컨텍스트 변경사항 반영
+
 // 전체 삭제
 queryFactory.delete(customer).execute();
 
@@ -259,6 +318,8 @@ queryFactory
     .delete(customer)
     .where(customer.level.lt(3))
     .execute();
+
+entityManager.clear();
 ```
 
 ## 8. Repository 패턴 적용
@@ -354,4 +415,5 @@ JPA 메서드명 쿼리나 단순한 `@Query`는 굳이 바꾸지 않아도 됩�
 
 ## 참고
 
-[QueryDSL 공식 문서 (한국어)](http://querydsl.com/static/querydsl/3.6.3/reference/ko-KR/html_single/)
+[QueryDSL 공식 문서 (GitHub)](https://github.com/querydsl/querydsl)
+[QueryDSL Reference (Latest)](https://querydsl.github.io/static/querydsl/latest/reference/html/)
